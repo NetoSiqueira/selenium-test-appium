@@ -3,6 +3,7 @@ package base;
 import com.google.common.collect.ImmutableMap;
 import core.DriverFactory;
 
+import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
 import org.openqa.selenium.*;
 
@@ -261,6 +262,14 @@ public class BasePage extends DriverFactory {
         int y = size.height /2;
         int inicio_x = (int) (size.width * inicio);
         int fim_x = (int) (size.width * fim);
+
+        genericSwipe(inicio_x, y, fim_x, y);
+    }
+    public void swipeElement(String locator, double inicio, double fim){
+        MobileElement element = (MobileElement) getDriver().findElement(By.xpath("//*[@text='"+locator+"']/.."));
+        int y = element.getLocation().y +(element.getSize().height/2);
+        int inicio_x = (int) (element.getSize().width * inicio);
+        int fim_x = (int) (element.getSize().width * fim);
 
         genericSwipe(inicio_x, y, fim_x, y);
     }

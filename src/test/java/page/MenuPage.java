@@ -13,6 +13,7 @@ public class MenuPage  extends BasePage {
 
     private final By clique = By.xpath("//*[@text='Cliques']");
     private final By swipe = By.xpath("//*[@text='Swipe']");
+    private final By swipeList = By.xpath("//*[@text='Swipe List']");
     public void acessarFormulario(){
         clicar(form);
     }
@@ -35,6 +36,9 @@ public class MenuPage  extends BasePage {
     }
     public void acessarSwipe(){
         clicar(swipe);
+    }
+    public void acessarSwipeList(){
+        clicar(swipeList);
     }
 
 }

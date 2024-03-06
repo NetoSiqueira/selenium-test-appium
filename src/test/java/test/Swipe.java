@@ -25,4 +25,22 @@ public class Swipe extends BaseSteps {
         page.irParaEsquerda();
         Assert.assertTrue(nav.existeElementoPorTexto("Mova a tela para"));
     }
+
+    @Test
+    public void deveRealizarSwipeList(){
+        nav.acessarSwipeList();
+
+        page.swipeListDireita("Opção 1");
+        page.clicarBotaoMais();
+
+        Assert.assertTrue(nav.existeElementoPorTexto("Opção 1 (+)"));
+
+        page.swipeListDireita("Opção 4");
+        page.clicarPorTexto("(-)");
+
+        Assert.assertTrue(nav.existeElementoPorTexto("Opção 4 (-)"));
+
+        page.swipeListEsquerda("Opção 5 (-)");
+        Assert.assertTrue(nav.existeElementoPorTexto("Opção 5"));
+    }
 }
