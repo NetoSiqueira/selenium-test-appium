@@ -290,4 +290,29 @@ public class BasePage extends DriverFactory {
         scroll(0.1,0.9, locator);
     }
 
+    public void dragDrop(String origem, String destino){
+        WebElement inicio = getDriver().findElement(By.xpath("//*[@text='"+origem+"']"));
+        WebElement fim = getDriver().findElement(By.xpath("//*[@text='"+destino+"']"));
+
+        PointerInput FINGER = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+        Sequence drag = new Sequence(FINGER, 1)
+                .addAction(FINGER.createPointerMove(Duration.ofMillis(0), PointerInput.Origin.viewport(),
+                        inicio.getLocation().getX(), inicio.getLocation().getY()))
+                .addAction(FINGER.createPointerDown(PointerInput.MouseButton.LEFT.asArg()))
+                .addAction(new Pause(FINGER, Duration.ofMillis(1000)))
+                .addAction(FINGER.createPointerMove(Duration.ofMillis(2000), PointerInput.Origin.viewport(),
+                        fim.getLocation().getX(), fim.getLocation().getY()))
+                .addAction(FINGER.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+        getDriver().perform(Arrays.asList(drag));
+    }
+
+    public String[] obterLista(By locator) {
+        List<WebElement> elements = getDriver().findElements(locator);
+        String[] retorno = new String[elements.size()];
+        for(int i = 0; i < elements.size(); i++){
+            retorno[i] = elements.get(i).getText();
+//			System.out.print("\"" + retorno[i] + "\", ");
+        }
+        return retorno;
+    }
 }
