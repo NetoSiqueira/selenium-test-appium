@@ -41,7 +41,6 @@ public class BasePage extends DriverFactory {
     }
 
     public void escrever(By locator, String texto){
-        getDriver().findElement(locator).clear();
         getDriver().findElement(locator).sendKeys(texto);
     }
 

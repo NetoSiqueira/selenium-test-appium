@@ -15,10 +15,12 @@ public class MenuPage  extends BasePage {
     private final By swipe = By.xpath("//*[@text='Swipe']");
     private final By swipeList = By.xpath("//*[@text='Swipe List']");
     private final By drop = By.xpath("//*[@text='Drag and drop']");
+    private final By srBarrigaHibrido = By.xpath("//*[@text='SeuBarriga Híbrido']");
+    private final By srBarrigaNativo = By.xpath("//*[@text='SeuBarriga Nativo']");
+
     public void acessarFormulario(){
         clicar(form);
     }
-
     public void acessarSplash(){
         clicar(splash);
     }
@@ -41,10 +43,15 @@ public class MenuPage  extends BasePage {
     public void acessarSwipeList(){
         clicar(swipeList);
     }
-
     public void acessarDragDrop(){
         scrollParaBaixo("Alertas");
         clicar(drop);
     }
+    public void acessarSrBarrigaHib(){
+        clicar(srBarrigaHibrido);
+    }
 
+    public void acessarSrBarrigaNat(){
+        clicar(srBarrigaNativo);
+    }
 }
