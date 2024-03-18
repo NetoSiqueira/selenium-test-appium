@@ -15,9 +15,7 @@ public class SwipePage extends BasePage {
         clicar(botaoParaEsquerda);
     }
 
-    public void swipeListEsquerda(String opcao){
-        swipeElement(opcao,0.1,0.9);
-    }
+
 
     public void swipeListDireita(String opcao){
         swipeElement(opcao,0.9,0.1);

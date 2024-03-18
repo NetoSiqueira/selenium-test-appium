@@ -49,4 +49,19 @@ public class Movimentacao extends BaseSteps {
         mov.botaoSalvar();
         Assert.assertEquals("Movimentação cadastrada com sucesso", mov.retornarMsgComSucesso());
     }
+
+    @Test
+    public void excluirMovimentacao(){
+        menu.acessarResumo();
+        mov.selecionarParaExclusao();
+        mov.botaoDeletarMov();
+
+        Assert.assertEquals("Movimentação removida com sucesso!", mov.retornarMsgMovExcluida());
+
+        menu.acessarHome();
+        mov.scrollParaCima("Conta com movimentacao");
+
+        Assert.assertFalse(mov.obterValorExistente("Conta para movimentacoes"));
+
+    }
 }

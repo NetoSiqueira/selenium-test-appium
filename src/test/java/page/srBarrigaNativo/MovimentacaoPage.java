@@ -13,7 +13,13 @@ public class MovimentacaoPage extends BasePage {
     private final By conta = By.xpath("//android.widget.CheckedTextView[@text=\"Conta para alterar\"]");
     private final By msgSucesso = By.xpath("//android.widget.TextView[ends-with(@text, 'sucesso')]");
 
-    //Movimentação cadastrada com sucesso
+    private final By bnt_deletar = By.xpath("//android.widget.TextView[@text=\"Del\"]");
+    private final By msgMovSucesso = By.xpath("//android.widget.TextView[@text=\"Movimentação removida com sucesso!\"]");
+
+
+
+    //android.widget.TextView[@text="Movimentação removida com sucesso!"]
+
 
     public void botaoSalvar(){
         clicar(salvar);
@@ -41,5 +47,14 @@ public class MovimentacaoPage extends BasePage {
         return obterValorPorTexto(msgSucesso);
     }
 
+    public void selecionarParaExclusao(){
+        swipeListDireita("Movimentacao para exclusao");
+    }
+    public void botaoDeletarMov(){
+        clicar(bnt_deletar);
+    }
+    public String retornarMsgMovExcluida(){
+        return obterValorPorTexto(msgMovSucesso);
+    }
 
 }
